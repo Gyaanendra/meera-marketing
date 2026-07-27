@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+.mk-wrap{background:var(--surface-1);border-radius:12px;padding:12px}
+.mk-site{background:#F1EEE4;color:#16171B;border-radius:8px;overflow:hidden;font-family:'Archivo',sans-serif}
+.mk-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#52524C}
+.mk-h1{font-family:'Syne',sans-serif;font-weight:800;line-height:.98;letter-spacing:-.01em;margin:8px 0 0}
+.mk-red{color:#D6402C}
+.mk-card{background:#fff;border:1px solid #D9D5C7;padding:14px;border-radius:0}
+.mk-btn-primary{background:#D6402C;color:#FFF6F2;font-weight:600;font-size:13px;padding:8px 16px;border:none;border-radius:6px}
+.mk-btn-secondary{background:transparent;color:#16171B;font-weight:600;font-size:13px;padding:8px 16px;border:1px solid #16171B;border-radius:6px}
+.aspect169{position:relative;width:100%;aspect-ratio:16/9;background:#fff;border:1px dashed #B9B4A2;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;color:#8a887e;overflow:hidden;transition:border-radius .1s linear}
+.aspect11{position:relative;width:100%;aspect-ratio:1/1;background:#fff;border:1px dashed #B9B4A2;display:flex;align-items:center;justify-content:center;color:#8a887e}
+</style>
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Bauhaus-minimalist mockup of the Meera site: hero, feature cards, and a slider-driven demo of the scroll expand/contract media effect with labeled placeholder aspect ratios</h2>
+
+<div class="mk-wrap">
+<div class="mk-site">
+
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #D9D5C7">
+  <div style="display:flex;align-items:center;gap:8px">
+    <div style="width:22px;height:22px;background:#1F4EAD"></div>
+    <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:15px">Meera</span>
+  </div>
+  <div style="display:flex;gap:16px;font-size:12px;color:#52524C">
+    <span>Product</span><span>Phases</span><span>About</span>
+  </div>
+  <button class="mk-btn-primary">Get started</button>
+</div>
+
+<div style="padding:36px 20px 28px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center">
+  <div>
+    <div class="mk-eyebrow">01 / who we are</div>
+    <div class="mk-h1" style="font-size:34px">Meet the <span class="mk-red">AI</span> chief<br/>of staff</div>
+    <p style="font-size:13px;color:#52524C;line-height:1.5;margin:10px 0 14px;max-width:34ch">Meera records meetings, transcribes them live, and turns talk into <span class="mk-red">structured</span> action.</p>
+    <div style="display:flex;gap:8px">
+      <button class="mk-btn-primary">See it in action</button>
+      <button class="mk-btn-secondary">Learn more</button>
+    </div>
+  </div>
+  <svg viewBox="0 0 200 200" width="100%" style="max-width:220px;justify-self:end">
+    <circle cx="100" cy="100" r="46" fill="#16171B"/>
+    <circle cx="140" cy="80" r="26" fill="#D6402C"/>
+    <path d="M40 100 a60 60 0 0 1 0 -60" stroke="#1F4EAD" stroke-width="5" fill="none"/>
+    <path d="M55 115 a45 45 0 0 1 0 -30" stroke="#E8A93B" stroke-width="5" fill="none"/>
+    <rect x="20" y="150" width="10" height="10" fill="#16171B"/>
+    <rect x="34" y="150" width="10" height="10" fill="#16171B"/>
+    <rect x="20" y="164" width="10" height="10" fill="#16171B"/>
+  </svg>
+</div>
+
+<div style="padding:8px 20px 28px">
+  <div class="mk-eyebrow">aspect ratio guide — hero visual = 1:1</div>
+</div>
+
+<div style="padding:0 20px 30px">
+  <div class="mk-eyebrow" style="margin-bottom:8px">02 / see meera in action</div>
+  <div style="text-align:center;font-size:11px;color:#8a887e;margin-bottom:6px">drag to simulate scroll position</div>
+  <input type="range" id="scrollSim" min="0" max="100" value="0" style="width:100%;margin-bottom:14px"/>
+  <div style="display:flex;justify-content:center">
+    <div class="aspect169" id="mediaBox" style="max-width:38%">
+      <i class="ti ti-player-play" style="font-size:20px"></i>
+      <span style="font-size:11px;font-family:'JetBrains Mono',monospace">16:9 video placeholder</span>
+    </div>
+  </div>
+</div>
+
+<div style="padding:0 20px 34px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+  <div class="mk-card">
+    <div class="aspect11" style="max-width:40px;max-height:40px;margin-bottom:10px"><i class="ti ti-photo" style="font-size:16px"></i></div>
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px">Live transcription</div>
+    <div style="font-size:12px;color:#52524C;margin-top:4px">Every word captured, speaker by speaker.</div>
+  </div>
+  <div class="mk-card">
+    <div class="aspect11" style="max-width:40px;max-height:40px;margin-bottom:10px"><i class="ti ti-checkbox" style="font-size:16px"></i></div>
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px">Action items</div>
+    <div style="font-size:12px;color:#52524C;margin-top:4px">Commitments extracted automatically.</div>
+  </div>
+  <div class="mk-card">
+    <div class="aspect11" style="max-width:40px;max-height:40px;margin-bottom:10px"><i class="ti ti-brain" style="font-size:16px"></i></div>
+    <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:14px">Team memory</div>
+    <div style="font-size:12px;color:#52524C;margin-top:4px">Ask questions across every past call.</div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<script>
+const slider = document.getElementById('scrollSim');
+const box = document.getElementById('mediaBox');
+slider.addEventListener('input', () => {
+  const t = slider.value / 100;
+  const widthPct = 38 + t * 62;
+  const radius = 8 - t * 8;
+  box.style.maxWidth = widthPct + '%';
+  box.style.borderRadius = radius + 'px';
+  box.style.borderStyle = t > 0.85 ? 'solid' : 'dashed';
+});
+</script>
