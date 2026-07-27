@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================
+   MEERA DESIGN TOKENS
+   Based on DESIGN_STYLE_GUIDE.md
+   ======================== */
+:root {
+  /* Base colors */
+  --color-bg: #F1EEE4;
+  --color-bg-raised: #FFFFFF;
+  --color-ink: #16171B;
+  --color-ink-soft: #52524C;
+  --color-line: #D9D5C7;
+
+  /* Accent */
+  --color-red: #D6402C;
+  --color-red-ink: #FFF6F2;
+
+  /* Geometry-only palette */
+  --color-cobalt: #1F4EAD;
+  --color-ochre: #E8A93B;
+
+  /* Dark section */
+  --color-ink-bg: #16171B;
+  --color-ink-bg-raised: #202127;
+  --color-paper-on-dark: #F1EEE4;
+
+  /* Type scale (desktop) */
+  --text-display-size: clamp(2.75rem, 7vw, 96px);
+  --text-h2-size: clamp(2rem, 4.5vw, 56px);
+  --text-h3-size: clamp(1.375rem, 2.5vw, 32px);
+  --text-lead-size: clamp(1.125rem, 1.5vw, 22px);
+  --text-body-size: clamp(1rem, 1.2vw, 17px);
+  --text-caption-size: clamp(0.8125rem, 1vw, 14px);
+  --text-eyebrow-size: clamp(0.75rem, 0.9vw, 13px);
+
+  /* Spacing (8px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+  --space-8: 96px;
+  --space-9: 128px;
+  --space-10: 192px;
+
+  /* UI */
+  --radius-ui: 6px;
+  --content-max: 1280px;
+
+  /* Fonts */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Archivo', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Easing */
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-symmetric: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ========================
+   GLOBAL RESET
+   ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--color-bg);
+  scroll-behavior: auto;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ========================
+   TYPOGRAPHY
+   ======================== */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-eyebrow-size);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-display-size);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.text-h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-h2-size);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.text-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-h3-size);
+  line-height: 1.1;
+}
+
+.text-lead {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-lead-size);
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-caption-size);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+.text-red {
+  color: var(--color-red) !important;
+}
+
+/* ========================
+   BUTTONS
+   ======================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--color-red);
+  color: var(--color-red-ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: var(--space-3) var(--space-5);
+  border: none;
+  border-radius: var(--radius-ui);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  line-height: 1;
+}
+.btn-primary:hover {
+  background-color: #b7361f;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-ui);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+.btn-secondary:hover {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+/* ========================
+   REVEAL-ON-SCROLL
+   ======================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* ========================
+   CONTENT CONTAINER
+   ======================== */
+.content-grid {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+@media (max-width: 640px) {
+  .content-grid {
+    padding: 0 var(--space-3);
+  }
+}
+
+/* ========================
+   DARK SECTION
+   ======================== */
+.section-dark {
+  background: var(--color-ink-bg);
+  color: var(--color-paper-on-dark);
+}
+.section-dark .eyebrow { color: rgba(241, 238, 228, 0.5); }
+.section-dark .btn-secondary {
+  border-color: rgba(241, 238, 228, 0.3);
+  color: var(--color-paper-on-dark);
+}
+.section-dark .btn-secondary:hover {
+  background: var(--color-paper-on-dark);
+  color: var(--color-ink-bg);
+}
+
+/* ========================
+   REDUCED MOTION
+   ======================== */
+@media (prefers-reduced-motion: reduce) {
+  html { overflow: auto; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .hero__title-word { opacity: 1 !important; transform: none !important; filter: none !important; }
+  [data-scroll-expand] { height: auto !important; }
+}
