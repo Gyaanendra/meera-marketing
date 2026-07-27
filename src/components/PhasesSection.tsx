@@ -121,7 +121,7 @@ function CardBlock({ item, tall, wide, style: extraStyle }: {
   style?: React.CSSProperties
 }) {
   return (
-    <div className="reveal" style={{
+    <div className="reveal card-hover" style={{
       background: 'var(--color-ink-bg-raised)',
       border: '1px solid rgba(241,238,228,0.12)',
       borderRadius: 'var(--radius-ui)',

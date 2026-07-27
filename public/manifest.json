@@ -1,0 +1,16 @@
+{
+  "name": "Meera — AI Chief of Staff",
+  "short_name": "Meera",
+  "description": "AI Chief of Staff for meeting intelligence and team memory.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F1EEE4",
+  "theme_color": "#F1EEE4",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

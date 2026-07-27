@@ -154,7 +154,7 @@ function QuoteCard({ t, tall, wide, style }: {
   style?: React.CSSProperties
 }) {
   return (
-    <div className="reveal" style={{
+    <div className="reveal card-hover" style={{
       background: '#fff',
       border: '1px solid var(--color-line)',
       borderTop: `3px solid ${t.color}`,

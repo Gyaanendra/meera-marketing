@@ -125,7 +125,7 @@ function ArtFill({ variant, style }: { variant: number; style?: React.CSSPropert
 /* ─── Content card ─── */
 function StepCard({ step, index, style }: { step: typeof steps[number]; index: number; style?: React.CSSProperties }) {
   return (
-    <div className="reveal" style={{
+    <div className="reveal card-hover" style={{
       background: 'var(--color-bg-raised)',
       border: '1px solid var(--color-line)',
       borderRadius: 'var(--radius-ui)',

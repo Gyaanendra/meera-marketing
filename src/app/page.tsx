@@ -30,6 +30,23 @@ export default function Home() {
     return () => clearTimeout(t)
   }, [])
 
+  // Handle hash navigation from other pages
+  useEffect(() => {
+    if (!removeLoader) return
+    const hash = window.location.hash.replace('#', '')
+    if (!hash) return
+    // Small delay for sections to be in DOM
+    const t = setTimeout(() => {
+      const el = document.getElementById(hash)
+      if (el) {
+        const lenis = (window as any).__lenis
+        if (lenis) lenis.scrollTo(el)
+        else el.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 500)
+    return () => clearTimeout(t)
+  }, [removeLoader])
+
   return (
     <>
       <div style={{ opacity: contentReady ? 1 : 0, transition: 'opacity 0.01s' }}>

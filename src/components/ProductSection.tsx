@@ -79,7 +79,7 @@ export default function ProductSection() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 'var(--space-4)' }}>
           {features.map((f, i) => (
-            <div key={i} className="reveal" style={{
+            <div key={i} className="reveal card-hover" style={{
               background: 'var(--color-bg-raised)',
               border: '1px solid var(--color-line)',
               padding: 'var(--space-5)',

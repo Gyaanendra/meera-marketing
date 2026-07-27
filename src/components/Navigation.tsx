@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import gsap from 'gsap'
 
 function scrollTo(id: string) {
@@ -12,14 +13,25 @@ function scrollTo(id: string) {
 }
 
 export default function Navigation() {
+  const pathname = usePathname()
+  const router = useRouter()
   const navRef = useRef<HTMLElement>(null)
   const innerRef = useRef<HTMLDivElement>(null)
+
+  const isHome = pathname === '/'
+
+  const handleNav = (sectionId: string) => {
+    if (isHome) {
+      scrollTo(sectionId)
+    } else {
+      router.push(`/#${sectionId}`)
+    }
+  }
 
   useEffect(() => {
     const inner = innerRef.current
     if (!inner) return
 
-    // Set initial state (transparent overlay)
     gsap.set(inner, {
       width: '100%',
       maxWidth: '100%',
@@ -44,8 +56,6 @@ export default function Navigation() {
 
     const onScroll = () => {
       const y = window.scrollY
-      const progress = Math.min(y / 120, 1)
-
       gsap.to(inner, {
         width: y > 10 ? floating.width : '100%',
         maxWidth: y > 10 ? floating.maxWidth : '100%',
@@ -93,26 +103,30 @@ export default function Navigation() {
           pointerEvents: 'auto',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }} onClick={() => isHome ? window.scrollTo({ top: 0, behavior: 'smooth' }) : router.push('/')}>
           <img src="/logo.png" alt="Meera" style={{ width: '2.5rem', height: '2.5rem', objectFit: 'contain' }} />
           <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '0.95rem' }}>Meera</span>
         </div>
         <div className="hidden md:flex" style={{ gap: '2rem', fontSize: '0.8rem', color: 'var(--color-ink-soft)' }}>
-          <button onClick={() => scrollTo('product')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
+          <button onClick={() => handleNav('product')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
             onMouseEnter={e => (e.target as HTMLElement).style.color = 'var(--color-ink)'}
             onMouseLeave={e => (e.target as HTMLElement).style.color = ''}
-          >Product</button>
-          <button onClick={() => scrollTo('steps')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
+          >Features</button>
+          <button onClick={() => handleNav('steps')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
             onMouseEnter={e => (e.target as HTMLElement).style.color = 'var(--color-ink)'}
             onMouseLeave={e => (e.target as HTMLElement).style.color = ''}
           >How it works</button>
-          <button onClick={() => scrollTo('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
+          <button onClick={() => router.push('/plans')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
+            onMouseEnter={e => (e.target as HTMLElement).style.color = 'var(--color-ink)'}
+            onMouseLeave={e => (e.target as HTMLElement).style.color = ''}
+          >Plans</button>
+          <button onClick={() => handleNav('about')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '0.8rem', color: 'var(--color-ink-soft)', transition: 'color 0.2s', padding: 0, fontFamily: 'inherit' }}
             onMouseEnter={e => (e.target as HTMLElement).style.color = 'var(--color-ink)'}
             onMouseLeave={e => (e.target as HTMLElement).style.color = ''}
           >About</button>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <button className="btn-primary" style={{ fontSize: '0.75rem', padding: '0.45rem 1rem' }} onClick={() => scrollTo('contact')}>Book a call</button>
+          <button className="btn-primary" style={{ fontSize: '0.75rem', padding: '0.45rem 1rem' }} onClick={() => isHome ? scrollTo('contact') : router.push('/#contact')}>Book a call</button>
         </div>
       </div>
     </nav>

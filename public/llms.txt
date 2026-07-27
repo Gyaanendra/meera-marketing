@@ -1,0 +1,28 @@
+# Meera — AI Chief of Staff
+
+> Meera is an AI Chief of Staff built by Hypotenuse Analytics. She joins meetings, transcribes conversations, extracts action items, tracks follow-ups, and surfaces insights automatically.
+
+## Key facts
+
+- **Product**: AI Chief of Staff for meeting intelligence and team memory
+- **Company**: Hypotenuse Analytics
+- **Pricing**: Free tier available, Growth at $29/month, Enterprise custom
+- **Integrations**: Google Calendar, Google Meet, Slack, Deepgram transcription
+- **Capabilities**: Meeting transcription, action item extraction, team memory Q&A, resume automation, weekly digests, follow-up tracking
+
+## Pages
+
+- Home: https://meera.hyzen.tech
+- Pricing: https://meera.hyzen.tech/plans
+
+## Tech stack
+
+- Next.js 16, React 19, TypeScript 5.9
+- Tailwind CSS v4, GSAP 3.15, Lenis 1.1
+- Framer Motion, @animateicons/react
+
+## Design system
+
+- Bauhaus-inspired: cream base (#F1EEE4), near-black ink (#16171B), red accent (#D6402C)
+- Typography: Syne (display), Archivo (body), JetBrains Mono (data)
+- 10-section landing page with scroll animations and bento grids
