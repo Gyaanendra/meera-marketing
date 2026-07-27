@@ -10,6 +10,9 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useEffect(() => {
     const isMobile = window.innerWidth < 768
 
+    // Remove native scrollbar space when Lenis is active
+    document.documentElement.classList.add('lenis')
+
     const lenis = new Lenis({
       duration: isMobile ? 0.8 : 1.5,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -27,6 +30,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      document.documentElement.classList.remove('lenis')
       lenis.destroy();
       gsap.ticker.remove(() => {});
     };
