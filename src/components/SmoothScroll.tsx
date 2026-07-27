@@ -8,12 +8,14 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768
+
     const lenis = new Lenis({
-      duration: 1.5,
+      duration: isMobile ? 0.8 : 1.5,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.1,
-      wheelMultiplier: 1.05,
+      touchMultiplier: isMobile ? 1.8 : 1.5,
+      wheelMultiplier: isMobile ? 0.8 : 1.05,
     });
     lenisRef.current = lenis;
     (window as any).__lenis = lenis;

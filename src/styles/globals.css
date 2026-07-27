@@ -75,7 +75,7 @@ html {
   background: var(--color-bg);
   scroll-behavior: auto;
   -webkit-font-smoothing: antialiased;
-  overflow: hidden;
+  overflow: clip;
 }
 
 body {
@@ -84,7 +84,7 @@ body {
   color: var(--color-ink);
   background: var(--color-bg);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img { max-width: 100%; display: block; }
@@ -231,7 +231,7 @@ a { color: inherit; text-decoration: none; }
    REDUCED MOTION
    ======================== */
 @media (prefers-reduced-motion: reduce) {
-  html { overflow: auto; }
+  html { overflow: clip; }
   .reveal { opacity: 1 !important; transform: none !important; }
   .hero__title-word { opacity: 1 !important; transform: none !important; filter: none !important; }
   [data-scroll-expand] { height: auto !important; }
