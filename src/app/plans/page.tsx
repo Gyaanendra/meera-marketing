@@ -1,9 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import gsap from 'gsap'
-import { ScrollTrigger } from '@/lib/gsap'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import { SpeakerCircle, VoiceArc, GridDots, OverlapZone } from '@/components/shapes/primitives'
@@ -88,21 +87,8 @@ const faqs = [
 ]
 
 export default function PlansPage() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useScrollReveal()
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
-        gsap.to(el, {
-          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 85%' },
-        })
-      })
-    })
-    return () => ctx.revert()
-  }, [])
 
   return (
     <main ref={containerRef} style={{ paddingTop: '6rem' }}>
@@ -152,6 +138,10 @@ export default function PlansPage() {
             gap: 'var(--space-4)',
             alignItems: 'start',
           }}>
+          <style>{`
+            @media (max-width: 768px) { .plans-grid { grid-template-columns: 1fr !important; } }
+            @media (min-width: 769px) and (max-width: 1023px) { .plans-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+          `}</style>
             {tiers.map((tier, i) => (
               <div key={i} className="reveal card-hover" style={{
                 background: tier.red ? 'var(--color-ink-bg)' : 'var(--color-bg-raised)',

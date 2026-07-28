@@ -199,6 +199,7 @@ a { color: inherit; text-decoration: none; }
 .reveal {
   opacity: 0;
   transform: translateY(24px);
+  will-change: transform, opacity;
 }
 
 /* ========================
@@ -213,6 +214,15 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 640px) {
   .content-grid {
     padding: 0 var(--space-3);
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --space-9: 72px;
+    --space-8: 56px;
+    --space-7: 40px;
+    --space-6: 32px;
   }
 }
 

@@ -9,7 +9,6 @@ import ProductSection from '@/components/ProductSection'
 import PhasesSection from '@/components/PhasesSection'
 import StepsSection from '@/components/StepsSection'
 import SystemFlowSection from '@/components/SystemFlowSection'
-import AboutSection from '@/components/AboutSection'
 import TestimonialsSection from '@/components/TestimonialsSection'
 import CTASection from '@/components/CTASection'
 import Footer from '@/components/Footer'
@@ -59,7 +58,6 @@ export default function Home() {
           <PhasesSection />
           <StepsSection />
           <SystemFlowSection />
-          <AboutSection />
           <TestimonialsSection />
           <CTASection />
         </main>

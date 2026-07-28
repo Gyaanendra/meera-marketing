@@ -228,6 +228,14 @@ export default function HeroSection({ revealed }: { revealed: boolean }) {
     if (!revealed || animatedRef.current || !containerRef.current) return
     animatedRef.current = true
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      // Set visible immediately
+      gsap.set('#hero-eyebrow, #hero-title, #hero-sub, #hero-cta, #hero-chips, #hero-social', { opacity: 1, y: 0 })
+      gsap.set('#hero-shape', { opacity: 1, scale: 1 })
+      return
+    }
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.7 } })
       tl.to('#hero-eyebrow', { opacity: 1, y: 0 }, 0)

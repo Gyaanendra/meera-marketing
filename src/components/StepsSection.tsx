@@ -23,6 +23,10 @@ function AnimatedArt({ variant }: { variant: number }) {
   useEffect(() => {
     const el = svgRef.current
     if (!el) return
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) return
+
     const ctx = gsap.context(() => {
       const circles = el.querySelectorAll('.pulse-circle')
       const arcs = el.querySelectorAll('.sweep-arc')

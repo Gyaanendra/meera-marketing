@@ -115,12 +115,16 @@ export default function Footer() {
       </div>
 
       <div style={{ position: 'relative', maxWidth: '1280px', margin: '0 auto' }}>
-        <div style={{
+        <div className="footer-grid" style={{
           display: 'grid',
           gridTemplateColumns: '1.4fr 1fr 1fr 1fr',
           gap: '2.5rem',
           paddingBottom: '3.5rem',
         }}>
+        <style>{`
+          @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr !important; } }
+          @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
           {/* Brand column */}
           <div className="footer-col">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>

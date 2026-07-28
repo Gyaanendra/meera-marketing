@@ -1,8 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from '@/lib/gsap'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { CardIcon } from '@/components/shapes/VoicesComposition'
 import { SpeakerCircle, VoiceArc, GridDots, OverlapZone } from '@/components/shapes/primitives'
 import AmbientShapes from '@/components/AmbientShapes'
@@ -35,20 +33,7 @@ const features = [
 ]
 
 export default function ProductSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    if (!containerRef.current) return
-    const ctx = gsap.context(() => {
-      gsap.utils.toArray<HTMLElement>('.reveal').forEach((el) => {
-        gsap.to(el, {
-          opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
-          scrollTrigger: { trigger: el as HTMLElement, start: 'top 85%' },
-        })
-      })
-    })
-    return () => ctx.revert()
-  }, [])
+  const containerRef = useScrollReveal()
 
   return (
     <section id="product" ref={containerRef} style={{ padding: 'var(--space-9) var(--space-5)', position: 'relative', overflow: 'hidden' }}>
